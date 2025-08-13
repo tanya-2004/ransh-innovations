@@ -1,8 +1,8 @@
 import './Projects.scss';
 import { useState, useEffect, useRef } from 'react';
-import { images } from '../../constants';
 import { motion } from 'framer-motion';
 import React from 'react';
+import images from '../../constants/images';
 
 const projects = [
   {
@@ -73,7 +73,7 @@ function Projects() {
     const ref = projectRefs.current[hash];
     if (ref?.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
-      const index = projects.findIndex(p => normalize(p.title) === hash);
+      const index = projects.findIndex((p) => normalize(p.title) === hash);
       setOpenIndex(index);
     }
   }, []);

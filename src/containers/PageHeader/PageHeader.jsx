@@ -1,8 +1,8 @@
 import "./PageHeader.scss";
 import { motion } from "framer-motion";
-import { images } from "../../constants";
 import { useLocation } from "react-router-dom";
 import { pageMeta } from "../../utils/pageMeta";
+import images from "../../constants/images"; 
 
 const PageHeader = () => {
   const { pathname } = useLocation();
@@ -16,7 +16,6 @@ const PageHeader = () => {
     desc: "Description not available.",
   };
 
-
   return (
     <header className="home-page page-wrapper" aria-label="Page Header">
       <motion.div
@@ -24,7 +23,6 @@ const PageHeader = () => {
         whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
         transition={{ duration: 0.5 }}
       >
-        {/* Left Content */}
         <motion.div
           className="page__header-info"
           whileInView={{ x: [-100, 0], opacity: [0, 1] }}
@@ -45,13 +43,12 @@ const PageHeader = () => {
           </div>
         </motion.div>
 
-        {/* Right Image */}
         <motion.div
           className="page__header-img"
           whileInView={{ opacity: [0, 1] }}
           transition={{ duration: 0.5, delayChildren: 0.5 }}
         >
-          <img src="/src/assets/page-header.svg" alt="Page visual" className="right-person" />
+          <img src={images.pagehead} alt="Page visual" className="right-person" />
         </motion.div>
       </motion.div>
     </header>

@@ -1,7 +1,7 @@
 import "./Us.scss";
 import { motion } from "framer-motion";
-import { images } from "../../constants";
 import React from "react";
+import images from "../../constants/images"; 
 
 const reasons = [
   {
@@ -42,7 +42,6 @@ function Us() {
         <div className="app__profiles">
           {reasons.map((item, index) => (
             <React.Fragment key={`reason-${index}`}>
-              {/* Desktop / Large screen */}
               <motion.div
                 whileInView={{ opacity: [0, 1] }}
                 whileHover={{ scale: 1.1 }}
@@ -50,10 +49,7 @@ function Us() {
                 className="app__profile-item"
               >
                 <div>
-                  <img
-                    src={item.imageUrl}
-                    alt={`Illustration for ${item.title}`}
-                  />
+                  <img src={item.imageUrl} alt={`Illustration for ${item.title}`} />
                   <h2 className="bold-text mt-2">{item.title}</h2>
                 </div>
                 <p className="p-text text-[#08006199] text-center mt-3 md:mt-1 font-normal">
@@ -61,17 +57,13 @@ function Us() {
                 </p>
               </motion.div>
 
-              {/* Tablet view */}
               <motion.div
                 whileInView={{ opacity: [0, 1] }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.5 }}
                 className="app__profile-item-tab"
               >
-                <img
-                  src={item.imageUrl}
-                  alt={`Visual cue for ${item.title}`}
-                />
+                <img src={item.imageUrl} alt={`Visual cue for ${item.title}`} />
                 <div>
                   <h2 className="bold-text">{item.title}</h2>
                   <p className="p-text text-[#08006199] text-left mt-2 font-normal">
