@@ -5,6 +5,10 @@
   @media screen and (max-width: 1024px) {
     padding: 0 2rem;
   }
+
+  @media screen and (max-width: 500px) {
+    padding: 0 1rem;
+  }
 }
 
 .h1-text {
@@ -30,16 +34,21 @@
 .app__profiles {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start; // ✅ Align with heading
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
   margin-top: 2rem;
-  gap: 2rem; // ✅ Even spacing between boxes
+  gap: 2rem;
   flex-wrap: nowrap;
 
   @media screen and (max-width: 1080px) {
     flex-wrap: wrap;
     justify-content: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }
 
@@ -80,7 +89,9 @@
 
   @media screen and (max-width: 500px) {
     width: 100%;
-    margin: 1rem 2rem 1rem 0;
+    margin: 1rem 0;
+    height: auto;
+    padding: 1rem;
 
     div {
       flex-direction: row;
@@ -89,7 +100,7 @@
 
       img {
         width: 35%;
-        height: 50%;
+        height: auto;
       }
     }
   }
@@ -98,8 +109,8 @@
 /* Tablet layout block */
 .app__profile-item-tab {
   width: 100%;
-  margin: 1rem 2rem 1rem 0;
-  padding: 1.5rem 0;
+  margin: 1rem 0;
+  padding: 1.5rem 1rem;
   border-radius: 20px;
   border: 1px solid #0800611A;
   box-shadow: inset 0 0 40px #002BD333;
@@ -110,8 +121,9 @@
 
   img {
     width: 15%;
-    height: 100%;
+    height: auto;
     border-radius: 15px;
+    object-fit: cover;
   }
 
   div {
@@ -123,7 +135,7 @@
   }
 
   @media screen and (min-width: 1080px),
-         screen and (max-width: 500px) {
+  screen and (max-width: 500px) {
     display: none;
   }
 }

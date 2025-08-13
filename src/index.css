@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap');
 
-/* Tailwind Layers */
+/* === Tailwind Layers === */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables */
+/* === Custom CSS Variables === */
 :root {
   --font-base: "Poppins", sans-serif;
   --layout-side-padding: 2rem;
+
   --primary-color: #edf2f8;
   --secondary-color: #313bac;
   --black-color: #030303;
@@ -19,7 +20,7 @@
   --orange-color: #FF3400;
 }
 
-/* Global Reset & Scroll Behavior */
+/* === Global Reset & Scroll Behavior === */
 * {
   box-sizing: border-box;
   margin: 0;

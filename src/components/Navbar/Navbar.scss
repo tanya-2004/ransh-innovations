@@ -8,28 +8,23 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem var(--layout-side-padding);
-
   background:
-    linear-gradient(to right, #080061 84%, transparent 16%), 
-    linear-gradient(
-      to bottom,
-      #FF3601    
-    );
+    linear-gradient(to right, #080061 84%, transparent 16%),
+    linear-gradient(to bottom, #FF3601);
 
   @media screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
     background:
       linear-gradient(to right, #080061 82%, transparent 18%),
-      linear-gradient(
-        to bottom,
-        #FF3601 
-      );
+      linear-gradient(to bottom, #FF3601);
   }
 }
 
-
 /* Logo */
 .app__navbar-logo img {
-  width: 180px;
+  width: clamp(140px, 18vw, 180px);
   height: auto;
 
   @media screen and (min-width: 2000px) {
@@ -43,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
   list-style: none;
 
   .nav-item {
@@ -53,7 +48,7 @@
 
     a,
     .dropdown-toggle {
-      font-size: 16px;
+      font-size: clamp(14px, 1.2vw, 16px);
       font-weight: 500;
       color: #ffffff;
       background: none;
@@ -86,7 +81,7 @@
   }
 
   @media screen and (max-width: 900px) {
-    background: linear-gradient(to right, #080061 82%, transparent 18%);
+    display: none;
   }
 }
 

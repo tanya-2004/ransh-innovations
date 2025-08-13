@@ -46,11 +46,13 @@
   justify-content: center;
   row-gap: 10px;
   margin: 1rem 0;
+  box-sizing: border-box;
 
   h2 {
     color: #fff;
     font-size: calc(50px + (100vw - 1024px) / 100);
     font-weight: 600;
+    margin: 0;
   }
 
   p {
@@ -59,6 +61,7 @@
     font-weight: 600;
     line-height: 35px;
     text-align: center;
+    margin: 0;
   }
 
   &:not(:last-child) {
@@ -71,9 +74,11 @@
 
   @media screen and (max-width: 1080px) {
     padding: 2rem;
+
     h2 {
       font-size: calc(40px + (100vw - 2000px) / 100);
     }
+
     p {
       font-size: calc(25px + (100vw - 1500px) / 100);
       line-height: 25px;
@@ -83,6 +88,7 @@
   @media screen and (max-width: 500px) {
     padding: 2rem 1rem;
     height: calc(150px + (100vh - 1024px) / 10);
+    max-width: 100%;
 
     &:nth-child(1),
     &:nth-child(2) {

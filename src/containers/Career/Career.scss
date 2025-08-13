@@ -38,7 +38,7 @@
     padding: 0 2rem;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 600px) {
     padding: 0 1rem;
   }
 }
@@ -54,14 +54,18 @@
     color: var(--accent-secondary);
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 600px) {
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 1.75rem;
   }
 }
 
 .job-filter-container {
-  max-width: 92%; 
-  margin: 2rem auto 3rem; 
+  max-width: 92%;
+  margin: 2rem auto 3rem;
   padding: 2rem;
   background: var(--gradient-bg);
   border-radius: var(--border-radius);
@@ -72,6 +76,10 @@
     max-width: 100%;
     margin: 1.5rem 1rem 2.5rem;
     padding: 1.5rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 1rem;
   }
 }
 
@@ -110,6 +118,7 @@
     transition: border 0.3s ease;
     line-height: 1.2;
     box-sizing: border-box;
+    width: 100%;
   }
 
   input {
@@ -168,6 +177,12 @@
   margin: 2rem auto;
   padding: 0 1rem;
   max-width: 1200px;
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 0.5rem;
+  }
 }
 
 .job-card {
@@ -230,6 +245,14 @@
       text-decoration: none;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 1.2rem;
+  }
 }
 
 .no-jobs-found {
@@ -256,15 +279,16 @@
     color: #555;
     font-size: 1rem;
   }
-}
 
+  @media screen and (max-width: 450px) {
+    padding: 3rem 1rem;
 
-@media screen and (max-width: 768px) {
-  .job-card {
-    padding: 1.5rem;
-  }
+    h2 {
+      font-size: 1.25rem;
+    }
 
-  .career-heading {
-    font-size: 2rem;
+    p {
+      font-size: 0.95rem;
+    }
   }
 }

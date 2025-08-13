@@ -15,7 +15,8 @@ $icon-color: #fff;
 
   @media screen and (max-width: 900px) {
     grid-template-columns: 1fr;
-    padding: 1rem 1.25rem;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
   }
 }
 
@@ -78,6 +79,7 @@ $icon-color: #fff;
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-wrap: wrap;
 
     h2 {
       margin: 0;
@@ -95,50 +97,66 @@ $icon-color: #fff;
   }
 }
 
-.app__footer-right .app__footer-links {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 6rem;
-  padding: 0 8rem 1rem;
-  margin-left: 5rem;
+.app__footer-right {
+  width: 100%;
 
-  .footer-column {
-    flex: 1;
+  .app__footer-links {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 6rem;
+    padding: 0 8rem 1rem;
+    margin-left: 5rem;
 
-    h2 {
-      color: $icon-color;
-      margin: 0;
-      padding-left: 0;         
-      text-align: left;
-      font-size: 1.1rem;
-      line-height: 1.4;
+    @media screen and (max-width: 1024px) {
+      padding: 0 2rem;
+      margin-left: 0;
+      gap: 3rem;
     }
 
-    ul {
-      list-style: none;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
       padding: 0;
-      margin: 0;
+    }
 
-      li {
-        margin: 10px 0;
+    .footer-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
 
-        a {
-          color: $icon-color;
-          opacity: 0.8;
-          text-decoration: none;
-          display: inline-block;
-          white-space: nowrap;
-          word-break: keep-all;
-          max-width: 100%;
-          padding-left: 0;
+      h2 {
+        color: $icon-color;
+        margin: 0;
+        padding-left: 0;
+        text-align: left;
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
 
-          &:hover {
-            opacity: 1;
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin: 10px 0;
+
+          a {
+            color: $icon-color;
+            opacity: 0.8;
+            text-decoration: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-break: keep-all;
+            max-width: 100%;
+            padding-left: 0;
+
+            &:hover {
+              opacity: 1;
+            }
           }
         }
       }
