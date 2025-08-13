@@ -1,0 +1,126 @@
+.home-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(to right, #080061 84%, transparent 16%),
+    linear-gradient(180deg, #FF3601, #F9F871);
+
+  @media screen and (max-width: 900px) {
+    background:
+      linear-gradient(to right, #080061 82%, transparent 18%),
+      linear-gradient(180deg, #FF3601, #F9F871);
+  }
+}
+
+.page-wrapper {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  padding: 1rem var(--layout-side-padding);
+
+  @media screen and (max-width: 1024px) {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.page__header {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  @media screen and (min-width: 2000px) {
+    padding-top: 8rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    padding: 2rem 0;
+  }
+}
+
+.page__header-info {
+  flex: 0.9;
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @media screen and (max-width: 900px) {
+    flex: 1;
+  }
+}
+
+.page__header-badge {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: var(--layout-side-padding);
+  padding-top: 1rem;
+
+  button {
+    background-color: #FF3601;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken(#FF3601, 10%);
+    }
+  }
+}
+
+.page__header-img {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: auto;
+  min-height: 300px;
+
+  .right-person {
+    max-height: 300px;
+    margin-bottom: -2.2rem;
+    height: auto;
+    z-index: 1;
+    align-self: flex-end;
+  }
+
+  @media screen and (min-width: 575px) and (max-width: 900px) {
+    width: 40%;
+
+    .right-person {
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    display: none;
+  }
+}
+
+.mobile__img-page {
+  width: 45%;
+  height: 35%;
+  margin-top: 1rem;
+
+  img {
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 575px) {
+    display: none;
+  }
+}

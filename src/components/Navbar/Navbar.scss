@@ -1,0 +1,242 @@
+.app__navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem var(--layout-side-padding);
+
+  background:
+    linear-gradient(to right, #080061 84%, transparent 16%), 
+    linear-gradient(
+      to bottom,
+      #FF3601    
+    );
+
+  @media screen and (max-width: 900px) {
+    background:
+      linear-gradient(to right, #080061 82%, transparent 18%),
+      linear-gradient(
+        to bottom,
+        #FF3601 
+      );
+  }
+}
+
+
+/* Logo */
+.app__navbar-logo img {
+  width: 180px;
+  height: auto;
+
+  @media screen and (min-width: 2000px) {
+    width: 200px;
+  }
+}
+
+/* Navigation Links */
+.app__navbar-links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    a,
+    .dropdown-toggle {
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      background: none;
+      border: none;
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s ease;
+
+      svg {
+        width: 12px;
+        height: 12px;
+        color: #ffffff;
+        transition: transform 0.3s ease;
+        vertical-align: middle;
+      }
+
+      &.open svg {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        font-weight: 600;
+        color: #ffffff;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    background: linear-gradient(to right, #080061 82%, transparent 18%);
+  }
+}
+
+/* Dropdown Wrapper */
+.dropdown-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 2.8rem;
+  left: 0;
+  background-color: #f9f9ff;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 0;
+  z-index: 100;
+  list-style: none;
+  width: auto;
+  white-space: nowrap;
+
+  li {
+    padding: 0.75rem 1rem;
+
+    a {
+      font-size: 14px;
+      color: #080061 !important;
+      background-color: transparent;
+      font-weight: 500;
+      text-decoration: none;
+      display: block;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #edf2f8;
+        color: #080061 !important;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* Mobile Menu */
+.app__navbar-menu {
+  display: none;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+  }
+
+  .menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 100vh;
+    background-color: #080061;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    z-index: 999;
+
+    button {
+      align-self: flex-end;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      li {
+
+        a,
+        .dropdown-toggle {
+          font-size: 18px;
+          color: #fff;
+          background: none;
+          border: none;
+          text-transform: capitalize;
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          opacity: 0.75;
+          transition: all 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+            font-weight: 600;
+          }
+
+          svg {
+            width: 12px;
+            height: 12px;
+            color: #ffffff;
+            transition: transform 0.3s ease;
+            vertical-align: middle;
+          }
+
+          &.open svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile Dropdown */
+.dropdown-mobile {
+  margin-top: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  list-style: none;
+  padding: 0.5rem 0;
+
+  li {
+    padding: 0.75rem 1rem;
+
+    a {
+      font-size: 12px;
+      color: #080061;
+      font-weight: 500;
+      text-decoration: none;
+      display: block;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #edf2f8;
+        font-weight: 600;
+        color: #080061;
+      }
+    }
+  }
+}

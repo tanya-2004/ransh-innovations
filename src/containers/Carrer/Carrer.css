@@ -1,0 +1,81 @@
+:root {
+    --spacing: 1rem;
+    --border-radius: 0.5rem;
+    --font-size-label: 0.875rem; /* 14px */
+    --font-size-input: 1rem; /* 16px */
+    --input-height: 2.5rem; /* 40px */
+  }
+  
+  .job-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing);
+    background-color: #d3d3d3; /* Light gray background */
+    padding: var(--spacing);
+    border-radius: var(--border-radius);
+    justify-content: space-between;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: calc(33.33% - var(--spacing)); /* Three items in one row */
+    min-width: 10rem;
+  }
+  
+  label {
+    font-size: var(--font-size-label);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .filter-input,
+  .filter-select {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-input);
+    background-color: #fff;
+    outline: none;
+    height: var(--input-height);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .filter-input:focus,
+  .filter-select:focus {
+    border-color: #007bff; /* Focus color */
+  }
+  
+  .clear-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    max-width: calc(33.33% - var(--spacing));
+  }
+  
+  .clear-button {
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    font-size: var(--font-size-input);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .clear-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .filter-group,
+    .clear-button-container {
+      max-width: 100%; /* Full width on small screens */
+    }
+  }
+  

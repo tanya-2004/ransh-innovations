@@ -1,0 +1,129 @@
+.app__wrapper {
+  padding: 0 5rem;
+  width: 100%;
+
+  @media screen and (max-width: 1024px) {
+    padding: 0 2rem;
+  }
+}
+
+.h1-text {
+  font-size: 40px;
+  font-weight: 600;
+  text-align: left;
+  color: #080061;
+
+  span {
+    color: #F9F871;
+  }
+
+  @media screen and (min-width: 2000px) {
+    font-size: 50px;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 25px;
+  }
+}
+
+/* Grid container */
+.app__profiles {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; // ✅ Align with heading
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 2rem;
+  gap: 2rem; // ✅ Even spacing between boxes
+  flex-wrap: nowrap;
+
+  @media screen and (max-width: 1080px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Desktop card */
+.app__profile-item {
+  width: 19rem;
+  height: 28rem;
+  padding: 1.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #0800611A;
+  box-shadow: inset 0 0 40px #002BD333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+  }
+
+  @media screen and (min-width: 2000px) {
+    width: 370px;
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 1080px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    margin: 1rem 2rem 1rem 0;
+
+    div {
+      flex-direction: row;
+      justify-content: center;
+      column-gap: 10%;
+
+      img {
+        width: 35%;
+        height: 50%;
+      }
+    }
+  }
+}
+
+/* Tablet layout block */
+.app__profile-item-tab {
+  width: 100%;
+  margin: 1rem 2rem 1rem 0;
+  padding: 1.5rem 0;
+  border-radius: 20px;
+  border: 1px solid #0800611A;
+  box-shadow: inset 0 0 40px #002BD333;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 15px;
+
+  img {
+    width: 15%;
+    height: 100%;
+    border-radius: 15px;
+  }
+
+  div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1080px),
+         screen and (max-width: 500px) {
+    display: none;
+  }
+}
