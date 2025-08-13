@@ -55,6 +55,7 @@ const projects = [
 function Projects() {
   const [openIndex, setOpenIndex] = useState(null);
   const [readMoreIndex, setReadMoreIndex] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 575);
   const projectRefs = useRef({});
 
   const normalize = (title) => title.toLowerCase().replaceAll(' ', '-');
@@ -78,6 +79,12 @@ function Projects() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 575);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);
     setReadMoreIndex(null);
@@ -99,19 +106,13 @@ function Projects() {
             const isExpanded = readMoreIndex === index;
 
             return isOpen ? (
-              <motion.div
-                key={index}
-                id={id}
-                ref={projectRefs.current[id]}
-                className="app__project-openitem"
-                onClick={() => toggleIndex(index)}
-                whileInView={{ opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.div
-                  className="project-content"
-                  whileInView={{ x: [-100, 0], opacity: [0, 1] }}
-                  transition={{ duration: 0.5 }}
+              isMobile ? (
+                <div
+                  key={index}
+                  id={id}
+                  ref={projectRefs.current[id]}
+                  className="app__project-openitem-mobile"
+                  onClick={() => toggleIndex(index)}
                 >
                   <h2 className="bold-text left-align">{item.title}</h2>
                   <ul className="app__work-filter">
@@ -137,9 +138,51 @@ function Projects() {
                       </button>
                     </>
                   )}
+                  <img src={item.imageUrl} alt={`Visual preview of ${item.title}`} />
+                </div>
+              ) : (
+                <motion.div
+                  key={index}
+                  id={id}
+                  ref={projectRefs.current[id]}
+                  className="app__project-openitem"
+                  onClick={() => toggleIndex(index)}
+                  whileInView={{ opacity: [0, 1] }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <motion.div
+                    className="project-content"
+                    whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <h2 className="bold-text left-align">{item.title}</h2>
+                    <ul className="app__work-filter">
+                      {item.categories.map((cat, catIndex) => (
+                        <li key={catIndex} className="app__work-filter-item app__flex p-text">
+                          {cat}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="p-text">{item.shortDescription}</p>
+                    {item.fullDescription && (
+                      <>
+                        {isExpanded && <p className="p-text">{item.fullDescription}</p>}
+                        <button
+                          className="readmore-link"
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleReadMore(index);
+                          }}
+                        >
+                          {isExpanded ? 'Show Less' : 'Read More'}
+                        </button>
+                      </>
+                    )}
+                  </motion.div>
+                  <img src={item.imageUrl} alt={`Visual preview of ${item.title}`} />
                 </motion.div>
-                <img src={item.imageUrl} alt={`Visual preview of ${item.title}`} />
-              </motion.div>
+              )
             ) : (
               <div
                 key={index}
