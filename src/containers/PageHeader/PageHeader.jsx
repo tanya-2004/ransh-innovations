@@ -2,7 +2,7 @@ import "./PageHeader.scss";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { pageMeta } from "../../utils/pageMeta";
-import images from "../../constants/images"; 
+import images from "../../constants/images";
 
 const PageHeader = () => {
   const { pathname } = useLocation();

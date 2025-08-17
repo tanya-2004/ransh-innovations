@@ -83,14 +83,35 @@
   }
 }
 
-.filter-top-row,
-.filter-bottom-row {
+.filter-top-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1.2rem;
   margin-bottom: 1rem;
 
   @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.filter-bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0;
+  padding: 0;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px) {
     flex-direction: column;
   }
 }
@@ -157,7 +178,8 @@
     background-color: var(--clear-btn-bg-color);
     color: white;
     font-weight: 500;
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem 1rem;
+    height: 2.8rem;
     border-radius: var(--border-radius);
     border: none;
     cursor: pointer;
@@ -167,6 +189,76 @@
     &:hover {
       background-color: var(--clear-btn-hover);
     }
+  }
+}
+
+/* ✅ Mobile refinements and spacing fix */
+@media screen and (max-width: 600px) {
+  .filter-bottom-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  .filter-top-row>.filter-group {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .filter-bottom-row>.filter-group,
+  .filter-bottom-row>.clear-button-container {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .filter-bottom-row>.filter-group:not(:last-child),
+  .filter-bottom-row>.clear-button-container {
+    margin-bottom: 0.75rem;
+  }
+
+  .filter-group {
+    margin: 0;
+    padding: 0;
+
+    label {
+      margin-bottom: 0.25rem;
+    }
+
+    input,
+    select {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .clear-button-container {
+    padding: 0;
+
+    .clear-button {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      height: calc(var(--input-height) + 4px);
+      width: 100%;
+      border-radius: var(--border-radius);
+      background-color: var(--clear-btn-bg-color);
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--clear-btn-hover);
+      }
+    }
+  }
+
+  .job-filter-container {
+    margin-bottom: 2rem;
   }
 }
 

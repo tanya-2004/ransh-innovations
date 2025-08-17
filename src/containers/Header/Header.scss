@@ -20,6 +20,7 @@
   height: 100%;
   flex-direction: column;
   padding: 1rem var(--layout-side-padding);
+  position: relative;
 
   @media screen and (max-width: 1024px) {
     padding: 2rem 1.5rem;
@@ -36,12 +37,13 @@
   align-items: center;
   padding: 0;
   margin-top: 10px;
+  position: relative;
 
   @media screen and (min-width: 2000px) {
     padding-top: 8rem;
   }
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 575px) {
     flex-direction: column;
     padding: 2rem 0;
     gap: 2rem;
@@ -56,10 +58,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-
-  @media screen and (max-width: 575px) {
-    flex: 1;
-  }
 }
 
 .app__header-badge {
@@ -68,13 +66,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 1rem var(--layout-side-padding);
+  padding-left: 1rem; 
+  padding-right: 1rem;
+  position: relative;
 
   .tagline-block {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
+    position: relative;
+    transform: translateX(2rem); 
 
     .head-text {
       font-size: 2.2rem;
@@ -93,6 +95,7 @@
     .p-text {
       font-size: 1rem;
       color: #fff;
+      word-spacing: 0.5em;
 
       @media screen and (max-width: 450px) {
         font-size: 0.95rem;
@@ -125,12 +128,31 @@
           font-size: 0.95rem;
         }
       }
+
+      @media screen and (max-width: 575px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+
+        button {
+          width: fit-content;
+        }
+      }
+    }
+
+    @media screen and (max-width: 575px) {
+      transform: translate(-1.5rem, -0.5rem); 
+      z-index: 2;
     }
   }
 
   @media screen and (max-width: 1200px) {
     justify-content: flex-start;
     align-items: flex-start;
+  }
+
+  @media screen and (max-width: 575px) {
+    padding: 0 1rem;
   }
 }
 
@@ -178,6 +200,16 @@
 
   @media screen and (max-width: 575px) {
     display: block;
-    margin-top: 2rem;
+    position: absolute;
+    bottom: -4rem;
+    right: -2rem;
+    width: 45%;
+    height: auto;
+    z-index: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }

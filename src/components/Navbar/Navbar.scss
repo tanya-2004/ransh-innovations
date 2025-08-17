@@ -11,6 +11,7 @@
   background:
     linear-gradient(to right, #080061 84%, transparent 16%),
     linear-gradient(to bottom, #FF3601);
+  position: relative;
 
   @media screen and (max-width: 900px) {
     flex-direction: column;
@@ -22,10 +23,35 @@
   }
 }
 
+/* ✅ Mobile Sidebar Opener */
+.menu-opener {
+  display: none;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #080061;
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    z-index: 101;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
+
 /* Logo */
 .app__navbar-logo img {
   width: clamp(140px, 18vw, 180px);
   height: auto;
+  position: relative;
+  transform: translateX(3rem); 
+
+  @media screen and (max-width: 900px) {
+    transform: translateX(0); 
+  }
 
   @media screen and (min-width: 2000px) {
     width: 200px;
@@ -131,23 +157,17 @@
 /* Mobile Menu */
 .app__navbar-menu {
   display: none;
+  position: relative;
 
   @media screen and (max-width: 900px) {
     display: block;
-  }
-
-  button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 28px;
   }
 
   .menu-panel {
     position: fixed;
     top: 0;
     right: 0;
-    width: 80%;
+    width: 60%;
     height: 100vh;
     background-color: #080061;
     display: flex;
@@ -216,7 +236,7 @@
   padding: 0.5rem 0;
 
   li {
-    padding: 0.75rem 1rem;
+    padding: 0.2rem 1rem;
 
     a {
       font-size: 12px;

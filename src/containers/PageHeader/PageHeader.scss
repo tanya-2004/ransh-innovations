@@ -44,6 +44,7 @@
     flex-direction: column;
     padding: 2rem 0;
     gap: 2rem;
+    transform: none;
   }
 }
 
@@ -64,12 +65,15 @@
 
 .page__header-badge {
   width: 100%;
+  max-width: 700px; 
+  padding-left: var(--layout-side-padding);
+  padding-right: 1rem; 
+  padding-top: 1rem;
+  transform: translateX(1rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-left: var(--layout-side-padding);
-  padding-top: 1rem;
 
   button {
     background-color: #FF3601;
@@ -136,5 +140,32 @@
 
   @media screen and (max-width: 575px) {
     display: block;
+  }
+}
+
+/* ✅ Stronger mobile layout refinements */
+@media screen and (max-width: 575px) {
+  .page__header {
+    position: relative;
+  }
+
+  .page__header-badge {
+    transform: translate(-2.5rem, -2.5rem);
+    z-index: 2;
+  }
+
+  .mobile__img-page {
+    position: absolute;
+    bottom: -7rem;
+    right: -4rem;
+    width: 50%;
+    height: auto;
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
   }
 }

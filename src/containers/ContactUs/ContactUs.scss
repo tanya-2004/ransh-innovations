@@ -27,10 +27,11 @@
     input,
     textarea {
       width: 100%;
-      padding: 0.85rem 1rem;
+      height: 48px;
+      padding: 0.6rem 0.8rem;
       border: none;
       border-radius: 7px;
-      background-color: #FFF9E4;
+      background-color: #ffffff;
       font-family: var(--font-base);
       color: var(--secondary-color);
       outline: none;
@@ -73,6 +74,9 @@
   }
 
   @media screen and (max-width: 480px) {
+    width: 100%; // ✅ Ensures message block matches name/email width
+    margin: 1rem 0;
+
     button {
       font-size: 1rem;
       padding: 0.75rem 1.5rem;
@@ -95,21 +99,44 @@
   margin: 0.75rem 0;
   width: 100%;
 
+  .country-select-wrapper,
+  .phone-field {
+    background-color: #FFF9E4;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 25px var(--primary-color);
+    }
+  }
+
   .country-select-wrapper {
     flex: 0 0 120px;
     max-width: 500px;
     display: flex;
     align-items: center;
+    height: 46px;
+    background-color: #FFF9E4;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 25px var(--primary-color);
+    }
 
     .custom-flag-select {
       width: 100%;
       display: flex;
       align-items: center;
+      height: 100%; 
 
       button[class^="ReactFlagsSelect-module_selectBtn"] {
         width: 100%;
-        height: 48px;
-        padding: 0.6rem 0.8rem;
+        height: 100%; 
+        line-height: normal;
+        padding: 0.5rem 0.75rem; 
         font-size: 1rem;
         border-radius: 7px;
         background-color: #ffffff;
@@ -124,15 +151,17 @@
     }
   }
 
+
   .phone-field {
     flex: 1;
     display: flex;
     align-items: center;
+    height: 49.5px;
+    margin-top: 3px;
 
     .phone-input {
-      margin-top: 0.5rem;
       width: 100%;
-      height: 48px;
+      height: 100%;
       padding: 0.6rem 0.8rem;
       font-size: 1rem;
       border: none;
@@ -153,6 +182,21 @@
       width: 100%;
     }
   }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    .country-select-wrapper {
+      flex: 0 0 40%;
+      max-width: none;
+    }
+
+    .phone-field {
+      flex: 1;
+    }
+  }
 }
 
 .has-error input,
@@ -170,6 +214,21 @@
 
 .textarea-wrapper {
   width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0.75rem;
+
+  textarea {
+    width: 100%;
+    height: 120px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 7px;
+    border: none;
+    resize: vertical;
+    box-sizing: border-box;
+  }
 
   @media screen and (max-width: 480px) {
     textarea {

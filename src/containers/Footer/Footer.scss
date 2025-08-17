@@ -115,10 +115,16 @@ $icon-color: #fff;
       gap: 3rem;
     }
 
+    /* ✅ Updated mobile layout */
     @media screen and (max-width: 768px) {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 2rem;
       padding: 0;
+
+      .footer-column {
+        width: 48%;
+      }
     }
 
     .footer-column {

@@ -83,11 +83,16 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div className="app__navbar-menu">
-        <button onClick={() => setIsMenuOpen(true)} aria-label="Open mobile menu">
-          <HiMenu />
-        </button>
+      {/* ✅ Hamburger icon visible only on mobile */}
+      <button
+        className="menu-opener"
+        onClick={() => setIsMenuOpen(true)}
+        aria-label="Open mobile menu"
+      >
+        <HiMenu />
+      </button>
 
+      <div className="app__navbar-menu">
         {isMenuOpen && (
           <motion.div
             initial={{ x: 300 }}
