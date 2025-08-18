@@ -1,6 +1,6 @@
 import './Blogs.scss';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MdArrowCircleLeft, MdArrowCircleRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -900,25 +900,62 @@ If that’s your kind of place—we’re already rooting for you.`
 
 function Blogs() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleItems, setVisibleItems] = useState(window.innerWidth > 1080 ? 3 : 1);
+  const [visibleItems, setVisibleItems] = useState(getVisibleItems());
+  const [scrollStep, setScrollStep] = useState(0);
+  const trackRef = useRef(null);
+
+  function getVisibleItems() {
+    const width = window.innerWidth;
+    if (width > 1080) return 3;
+    if (width > 768) return 2;
+    return 1;
+  }
 
   useEffect(() => {
     const updateVisible = () => {
-      setVisibleItems(window.innerWidth > 1080 ? 3 : 1);
+      const items = getVisibleItems();
+      setVisibleItems(items);
+      setCurrentIndex(0);
+
+      if (trackRef.current) {
+        const item = trackRef.current.querySelector('.blog-slider-item-wrapper');
+        if (item) {
+          const style = getComputedStyle(item);
+          const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+          setScrollStep(item.getBoundingClientRect().width + margin);
+        }
+      }
     };
+
+    updateVisible();
     window.addEventListener('resize', updateVisible);
     return () => window.removeEventListener('resize', updateVisible);
   }, []);
 
   const handleNext = () => {
-    if (currentIndex < blogPosts.length - visibleItems) {
+    const maxIndex = Math.max(0, blogPosts.length - visibleItems);
+    if (currentIndex < maxIndex) {
       setCurrentIndex((prev) => prev + 1);
+    }
+
+    if (trackRef.current) {
+      trackRef.current.scrollBy({
+        left: scrollStep,
+        behavior: 'smooth',
+      });
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
+    }
+
+    if (trackRef.current) {
+      trackRef.current.scrollBy({
+        left: -scrollStep,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -930,19 +967,15 @@ function Blogs() {
           whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
           transition={{ duration: 0.5 }}
         >
-          <div className="slider-container">
-            <div className="slider">
-              <div
-                className="slider-track"
-                style={{
-                  transform: `translateX(-${currentIndex * (100 / (1.9 * visibleItems))}%)`,
-                }}
-              >
+          <div className="blog-slider-container">
+            <div className="blog-slider" ref={trackRef}>
+              <div className="blog-slider-track">
                 {blogPosts.map((post) => (
-                  <div className="slider-item-wrapper" key={post.id}>
+                  <div className="blog-slider-item-wrapper" key={post.id}>
                     <BlogCard post={post} />
                   </div>
                 ))}
+                <div className="blog-buffer-card" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -973,7 +1006,7 @@ function BlogCard({ post }) {
     .slice(0, 180) + '...';
 
   return (
-    <div className={`slider-item ${isTall ? 'tall-card' : ''}`}>
+    <div className={`blog-slider-item ${isTall ? 'tall-card' : ''}`}>
       <h2 className="bold-text">{post.title}</h2>
       <h2 className="p-text text-[#080061]">
         {post.author} • {post.date}

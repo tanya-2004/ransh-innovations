@@ -1,8 +1,7 @@
 import './Testimonials.scss';
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MdArrowCircleLeft, MdArrowCircleRight } from 'react-icons/md';
-import React from 'react';
 
 function Testimonials() {
   const testimonials = [
@@ -54,26 +53,61 @@ function Testimonials() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleItems, setVisibleItems] = useState(window.innerWidth > 1080 ? 3 : 1);
+  const [visibleItems, setVisibleItems] = useState(getVisibleItems());
+  const [scrollStep, setScrollStep] = useState(0);
   const [expandedStates, setExpandedStates] = useState({});
+  const trackRef = useRef(null);
+
+  function getVisibleItems() {
+    const width = window.innerWidth;
+    if (width > 1080) return 3;
+    if (width > 768) return 2;
+    return 1;
+  }
 
   useEffect(() => {
     const updateVisible = () => {
-      setVisibleItems(window.innerWidth > 1080 ? 3 : 1);
+      const items = getVisibleItems();
+      setVisibleItems(items);
+      setCurrentIndex(0);
+
+      if (trackRef.current) {
+        const item = trackRef.current.querySelector('.testimonial-slider-item-wrapper');
+        if (item) {
+          setScrollStep(item.getBoundingClientRect().width);
+        }
+      }
     };
+
+    updateVisible();
     window.addEventListener('resize', updateVisible);
     return () => window.removeEventListener('resize', updateVisible);
   }, []);
 
   const handleNext = () => {
-    if (currentIndex < testimonials.length - visibleItems) {
+    const maxIndex = Math.max(0, testimonials.length - visibleItems);
+    if (currentIndex < maxIndex) {
       setCurrentIndex((prev) => prev + 1);
+    }
+
+    if (window.innerWidth <= 768 && trackRef.current) {
+      trackRef.current.scrollBy({
+        left: scrollStep,
+        behavior: 'smooth',
+      });
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
+    }
+
+    if (window.innerWidth <= 768 && trackRef.current) {
+      trackRef.current.scrollBy({
+        left: -scrollStep,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -86,51 +120,59 @@ function Testimonials() {
 
   return (
     <section className="app__wrapper mt-2 md:mt-10" aria-label="Intern testimonials">
-      <h1 className="h1-text">Testimonials</h1>
+      <div className="app__testimonials__section">
+        <h1 className="h1-text">Testimonials</h1>
 
-      <motion.div
-        whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
-        transition={{ duration: 0.5 }}
-        className="app__test__profiles"
-      >
-        <div className="slider-container">
-          <div className="slider">
-            <div
-              className="slider-track"
-              style={{ transform: `translateX(-${currentIndex * (100 / visibleItems)}%)` }}
-            >
-              {testimonials.map((item) => (
-                <div className="slider-item-wrapper" key={item.id}>
-                  <TestimonialCard
-                    item={item}
-                    isExpanded={expandedStates[item.id]}
-                    toggle={() => toggleExpand(item.id)}
-                  />
-                </div>
-              ))}
+        <motion.div
+          whileInView={{ y: [100, 50, 0], opacity: [0, 0, 1] }}
+          transition={{ duration: 0.5 }}
+          className="app__test__profiles"
+        >
+          <div className="testimonial-slider-container">
+            <div className="testimonial-slider">
+              <div
+                className="testimonial-slider-track"
+                ref={trackRef}
+                style={
+                  window.innerWidth > 768
+                    ? { transform: `translateX(-${currentIndex * scrollStep}px)` }
+                    : undefined
+                }
+              >
+                {testimonials.map((item) => (
+                  <div className="testimonial-slider-item-wrapper" key={item.id}>
+                    <TestimonialCard
+                      item={item}
+                      isExpanded={expandedStates[item.id]}
+                      toggle={() => toggleExpand(item.id)}
+                    />
+                  </div>
+                ))}
+
+                {window.innerWidth <= 768 && (
+                  <div className="testimonial-buffer-card" aria-hidden="true" />
+                )}
+              </div>
+            </div>
+
+            <div className="testimonial-nav">
+              <button onClick={handlePrev}>
+                <MdArrowCircleLeft className="testimonial-arrow" />
+              </button>
+              <button onClick={handleNext}>
+                <MdArrowCircleRight className="testimonial-arrow" />
+              </button>
             </div>
           </div>
-
-          <div className="testimonial-nav">
-            <button onClick={handlePrev} disabled={currentIndex === 0}>
-              <MdArrowCircleLeft className="testimonial-arrow" />
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={currentIndex >= testimonials.length - visibleItems}
-            >
-              <MdArrowCircleRight className="testimonial-arrow" />
-            </button>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
 
 function TestimonialCard({ item, isExpanded, toggle }) {
   return (
-    <div className={`slider-item ${isExpanded ? 'expanded' : 'collapsed'}`}>
+    <div className={`testimonial-slider-item ${isExpanded ? 'expanded' : 'collapsed'}`}>
       <h2 className="name">{item.name}</h2>
       <h3 className="designation">{item.designation}</h3>
       <p className="short-description">{item.shortDescription}</p>

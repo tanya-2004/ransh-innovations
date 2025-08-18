@@ -16,18 +16,20 @@
   align-items: flex-start;
   margin: 1rem 2rem;
 
-  >div:not(.app__phone-row) {
+  >div:not(.app__phone-row):not(.textarea-wrapper) {
     width: 100%;
     margin: 0.75rem 0;
     border-radius: 10px;
     cursor: pointer;
     background-color: #FFF9E4;
     transition: box-shadow 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    height: 49.5px;
 
-    input,
-    textarea {
+    input {
       width: 100%;
-      height: 48px;
+      height: 100%;
       padding: 0.6rem 0.8rem;
       border: none;
       border-radius: 7px;
@@ -36,11 +38,6 @@
       color: var(--secondary-color);
       outline: none;
       box-sizing: border-box;
-    }
-
-    textarea {
-      height: 120px;
-      resize: vertical;
     }
 
     &:hover {
@@ -74,7 +71,7 @@
   }
 
   @media screen and (max-width: 480px) {
-    width: 100%; // ✅ Ensures message block matches name/email width
+    width: 100%;
     margin: 1rem 0;
 
     button {
@@ -105,6 +102,10 @@
     border-radius: 10px;
     cursor: pointer;
     transition: box-shadow 0.3s ease-in-out;
+    height: 49.5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
 
     &:hover {
       box-shadow: 0 0 25px var(--primary-color);
@@ -114,30 +115,21 @@
   .country-select-wrapper {
     flex: 0 0 120px;
     max-width: 500px;
-    display: flex;
-    align-items: center;
-    height: 46px;
-    background-color: #FFF9E4;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
-
-    &:hover {
-      box-shadow: 0 0 25px var(--primary-color);
-    }
 
     .custom-flag-select {
       width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
-      height: 100%; 
 
       button[class^="ReactFlagsSelect-module_selectBtn"] {
+        transform: translateY(-5.5px);
         width: 100%;
-        height: 100%; 
-        line-height: normal;
-        padding: 0.5rem 0.75rem; 
+        height: 100%;
+        padding: 0.6rem 0.8rem;
         font-size: 1rem;
+        line-height: normal;
+        vertical-align: middle;
         border-radius: 7px;
         background-color: #ffffff;
         font-family: var(--font-base);
@@ -151,13 +143,11 @@
     }
   }
 
-
   .phone-field {
     flex: 1;
     display: flex;
     align-items: center;
     height: 49.5px;
-    margin-top: 3px;
 
     .phone-input {
       width: 100%;
@@ -199,6 +189,42 @@
   }
 }
 
+.textarea-wrapper {
+  width: 100%;
+  height: 120px; // ✅ Match textarea height
+  background-color: #FFF9E4;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease-in-out;
+  box-sizing: border-box;
+  margin: 0.75rem 0;
+
+  &:hover {
+    box-shadow: 0 0 25px var(--primary-color);
+  }
+
+  textarea {
+    width: 100%;
+    height: 100%; // ✅ Fill wrapper height
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 7px;
+    border: none;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: var(--font-base);
+    color: var(--secondary-color);
+    outline: none;
+  }
+
+  @media screen and (max-width: 480px) {
+    textarea {
+      font-size: 0.95rem;
+      padding: 0.75rem;
+    }
+  }
+}
+
 .has-error input,
 .has-error textarea {
   border: 1px solid red;
@@ -210,32 +236,6 @@
   color: red;
   margin-top: 0.3rem;
   font-family: var(--font-base);
-}
-
-.textarea-wrapper {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 0.75rem;
-
-  textarea {
-    width: 100%;
-    height: 120px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    background-color: #ffffff;
-    border-radius: 7px;
-    border: none;
-    resize: vertical;
-    box-sizing: border-box;
-  }
-
-  @media screen and (max-width: 480px) {
-    textarea {
-      font-size: 0.95rem;
-      padding: 0.75rem;
-    }
-  }
 }
 
 .responsive-button {
