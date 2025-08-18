@@ -16,7 +16,7 @@ const subMenuItems = [
   { name: 'Careers', link: '/career' },
   { name: 'Blogs', link: '/blogs' },
   { name: 'Contact Us', link: '/contact' },
-  { name: "FAQ'S", link: '/faq' },
+  { name: "FAQ's", link: '/faq' },
 ];
 
 const Navbar = () => {
