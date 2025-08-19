@@ -82,10 +82,10 @@ function Footer() {
               <h2 className="bold-text">Projects</h2>
               <ul>
                 <li>
-                  <a href="/projects#instantsports" aria-label="Scroll to InstantSports section">InstantSports</a>
+                  <a href="/projects#insports" aria-label="Scroll to InSports section">InSports</a>
                 </li>
                 <li>
-                  <a href="/projects#ai-powered-news-aggregator" aria-label="Scroll to News Aggregator section">AI News Aggregator</a>
+                  <a href="/projects#news360" aria-label="Scroll to News360 section">News360</a>
                 </li>
                 <li>
                   <a href="/projects#engle" aria-label="Scroll to Engle project section">Engle</a>

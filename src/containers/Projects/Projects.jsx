@@ -7,7 +7,7 @@ import images from '../../constants/images';
 const projects = [
   {
     imageUrl: images.project01,
-    title: 'InstantSports',
+    title: 'InSports',
     categories: ['Live Scores', 'Sports Analytics', 'UI/UX', 'Real-time Data'],
     shortDescription:
       'A digital platform that provides up-to-date information on various sports events. It offers live scores, match updates, news, and expert opinions in real-time.',
@@ -16,7 +16,7 @@ const projects = [
   },
   {
     imageUrl: images.project01,
-    title: 'AI Powered News Aggregator',
+    title: 'News360',
     categories: ['AI', 'News Curation', 'Custom Feeds', 'Web/Mobile App'],
     shortDescription:
       'An intelligent platform that curates news and articles tailored to the user’s needs. It streamlines how users stay informed.',

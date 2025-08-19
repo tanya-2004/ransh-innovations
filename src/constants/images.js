@@ -1,7 +1,7 @@
 import us01 from '../assets/Us-section-1.svg';
-import us02 from '../assets/Us-section-2.svg';
+import us02 from '../assets/Us-section-2.jpeg';
 import us03 from '../assets/Us-section-3.svg';
-import us04 from '../assets/Us-section-4.svg';
+import us04 from '../assets/Us-section-4.jpeg';
 import test01 from '../assets/testimonials01.svg';
 import project01 from'../assets/project01.svg';
 import pagehead from '../assets/page-header.svg';
